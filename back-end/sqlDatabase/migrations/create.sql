@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS images CASCADE;
+CREATE TABLE images (
+  id SERIAL PRIMARY KEY NOT NULL,
+  image_name VARCHAR(255) NOT NULL,
+  image_file bytea NOT NULL
+);
