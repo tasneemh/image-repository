@@ -11,8 +11,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Hello!");
+app.post("/upload", (request, response) => {
+  console.log("request.body: ", request.body);
+  //console.log("request.body.data: ", request.body.data);
+  console.log("request.params: ", request.params);
+  console.log("request.files: ", request.files);
+  //console.log("request: ", request);
 });
 
 app.listen(PORT, () => {
