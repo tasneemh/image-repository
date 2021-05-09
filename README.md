@@ -1,3 +1,7 @@
+### IMAGE REPOSITORY
+
+This is a full stack web application where users can upload an image to the database and view all images that are available.
+
 database name: image_db
 
 This database has been created in virtual environment of vagrant

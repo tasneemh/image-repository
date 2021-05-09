@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//handle file uploads using multer (middleware)
 const imageUpload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,14 +22,12 @@ const imageUpload = multer({
     },
   }),
 });
-
+//get all images from database
 app.get("/getimages/", (request, response) => {
-  console.log("request.body: ", request.body);
   sqlDbHelpers
     .getAllImages()
     .then((data) => {
       const arr = data;
-      console.log("arr inside server: ", arr);
       if (!arr) {
         response.send("Error while retrieving the images");
       } else {
@@ -36,18 +35,16 @@ app.get("/getimages/", (request, response) => {
       }
     })
     .catch((error) => {
-      console.log("error inside server: ", error);
+      response.error(error);
     });
 });
-
+//upload image in database
 app.post("/upload", imageUpload.single("file"), (request, response) => {
   const file = request.file;
-  console.log("file", file);
   if (file) {
     sqlDbHelpers
       .uploadImages(file)
       .then((data) => {
-        console.log("data inside server: ", data);
         if (data) {
           response.send("Image uploaded successfully!");
         } else {
@@ -55,13 +52,9 @@ app.post("/upload", imageUpload.single("file"), (request, response) => {
         }
       })
       .catch((error) => {
-        console.log("error inside server: ", error);
-        response.error("Error while uploading image");
+        response.error("Error while uploading image" + error);
       });
   } else {
-    console.log(
-      "There has been a problem in sending image from client to server"
-    );
     response.send(
       "There has been a problem in sending image from client to server"
     );

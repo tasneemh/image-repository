@@ -1,3 +1,4 @@
+//importing dependency
 const { Pool } = require("pg");
 
 const pool = new Pool({
@@ -9,9 +10,9 @@ const pool = new Pool({
 });
 
 pool.connect((err) => {
-  if (err) throw new Error("error inside db.js: ", err);
+  if (err) throw new Error("Error inside db.js: ", err);
 });
 
-console.log("postgrel sql db connection establishing...");
+console.log("PostgreSQL database connection establishing...");
 //exporting pool
 module.exports = pool;

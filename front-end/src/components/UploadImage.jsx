@@ -1,3 +1,4 @@
+//importing dependencies
 import React from "react";
 import axios from "axios";
 const FormData = require("form-data");
@@ -5,26 +6,24 @@ const FormData = require("form-data");
 function UploadImage(props) {
   const { selectedImage, setSelectedImage, message, setMessage } = props;
 
-  const clearForm = () => {
-    console.log("inside clear form function");
-    setSelectedImage("");
-  };
+  //clear any success or error messages
   const clearMessage = () => {
     setTimeout(() => {
       setMessage("");
     }, 5000);
   };
+  //handle input field in the form
   const handleFile = (event) => {
     const file = event.target.files[0];
-    console.log("file inside handleFile: ", file);
     setSelectedImage(file);
   };
-
+  //handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     if (selectedImage) {
       let file = selectedImage;
       clearForm();
+      //attach image using formdata
       let formdata = new FormData();
       formdata.append("file", file);
       const config = {
@@ -32,17 +31,15 @@ function UploadImage(props) {
           "content-type": "multipart/form-data",
         },
       };
-
+      //sending request to the server
       axios
         .post("http://localhost:8080/upload", formdata, config)
         .then((response) => {
           clearForm();
-          console.log("response inside uploadImage in axios: ", response);
           setMessage(response.data);
           clearMessage();
         })
         .catch((error) => {
-          console.log("error inside axios in uploadImages: ", error);
           setMessage(error);
           clearMessage();
         });
@@ -52,7 +49,6 @@ function UploadImage(props) {
     }
   };
 
-  //console.log(selectedImage, name);
   return (
     <form className="form">
       <div className="form-group">

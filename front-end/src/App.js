@@ -1,3 +1,4 @@
+//importing dependencies and components
 import "./App.css";
 import { useState } from "react";
 import UploadImage from "./components/UploadImage";
@@ -7,6 +8,7 @@ function App() {
   const [selectedImage, setSelectedImage] = useState("");
   const [message, setMessage] = useState("");
   const [imagesArr, setImagesArr] = useState([]);
+
   return (
     <div className="App">
       <UploadImage

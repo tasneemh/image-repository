@@ -1,3 +1,4 @@
+//importing dependencies and components
 import React from "react";
 import axios from "axios";
 import Image from "./Image";
@@ -8,11 +9,10 @@ function GetImages(props) {
     axios
       .get("http://localhost:8080/getimages/")
       .then((response) => {
-        console.log("response in axios in getImages: ", response.data);
         setImagesArr(response.data);
       })
       .catch((error) => {
-        console.log("error in axios in getImages: ", error);
+        setMessage(error);
       });
   };
   return (

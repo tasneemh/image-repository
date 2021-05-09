@@ -1,6 +1,5 @@
 module.exports = (pool) => {
   const uploadImages = (file) => {
-    console.log("file inside index: ", file);
     const { originalname, mimetype, filename, path, size } = file;
     return pool
       .query(
@@ -9,22 +8,20 @@ module.exports = (pool) => {
         [originalname, filename, path, mimetype, size]
       )
       .then((response) => {
-        console.log("response.rows inside index: ", response.rows);
         return response.rows[0];
       })
       .catch((error) => {
-        console.log("error inside index: ", error);
+        return error;
       });
   };
   const getAllImages = () => {
     return pool
       .query(`SELECT * FROM images;`)
       .then((response) => {
-        console.log("response inside index: ", response.rows);
         return response.rows;
       })
       .catch((error) => {
-        console.log("error inside index: ", error);
+        return error;
       });
   };
   return {

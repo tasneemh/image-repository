@@ -9,10 +9,8 @@ html,
 body {
   height: 100vh;
   width: 100vw;
-  /* border: 1px solid blue; */
 }
 .form {
-  /* border: 1px solid green; */
   height: 20%;
   width: 100%;
   display: flex;
@@ -21,7 +19,6 @@ body {
   margin: 1em;
 }
 .form-group {
-  /* border: 1px solid red; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 1em;
@@ -31,20 +28,17 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .form label {
-  /* border: 1px solid red; */
   width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .form-input {
-  /* border: 1px solid gray; */
   display: flex;
   padding: 0.5em;
 }
 
 .btn-container {
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,10 +47,8 @@ body {
 .images-container {
   width: 100%;
   height: 80%;
-  /* border: 3px solid green; */
 }
 .images-container-header {
-  /* border: 1px solid blue; */
   display: flex;
   height: 20%;
   justify-content: center;
