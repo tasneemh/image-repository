@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "./Image";
 
 function GetImages(props) {
-  const { imagesArr, setImagesArr } = props;
+  const { imagesArr, setImagesArr, setMessage } = props;
   const getImages = () => {
     axios
       .get("http://localhost:8080/getimages/")

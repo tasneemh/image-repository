@@ -17,7 +17,11 @@ function App() {
         message={message}
         setMessage={setMessage}
       />
-      <GetImages imagesArr={imagesArr} setImagesArr={setImagesArr} />
+      <GetImages
+        imagesArr={imagesArr}
+        setImagesArr={setImagesArr}
+        setMessage={setMessage}
+      />
     </div>
   );
 }

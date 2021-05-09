@@ -22,7 +22,6 @@ function UploadImage(props) {
     event.preventDefault();
     if (selectedImage) {
       let file = selectedImage;
-      clearForm();
       //attach image using formdata
       let formdata = new FormData();
       formdata.append("file", file);
@@ -35,7 +34,6 @@ function UploadImage(props) {
       axios
         .post("http://localhost:8080/upload", formdata, config)
         .then((response) => {
-          clearForm();
           setMessage(response.data);
           clearMessage();
         })
